@@ -159,3 +159,26 @@ const countryList = {
   ZMK: "ZM",
   ZWD: "ZW",
 };
+const baseUrl = "https://cdn.jsdelivr.net/gh/fawazahmed0/currency-api@1/latest/currencies/eur/jpy.json";
+
+const dropdowns = document.querySelectorAll(".dropdown Select");
+
+for(let currencyCode in countryList){
+  console.log(currencyCode,countryList[currencyCode]);
+}
+
+for(let select of dropdowns){
+  for(let currencyCode in countryList){
+    let newOpt  = document.createElement("option");
+    newOpt.innerText = currencyCode;
+    newOpt.value = currencyCode;
+    if(select.name === "From" && currencyCode ==="USD"){
+      newOpt.selected = "selected";
+    }
+    else if(select.name==="to" && currencyCode === "INR"){
+      newOpt.selected = "selected";
+    }
+    select.append(newOpt);
+  }
+}
+
